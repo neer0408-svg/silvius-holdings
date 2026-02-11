@@ -8,37 +8,37 @@
     <style>
         :root { --bg: #F9F9F8; --main: #1A1A1A; --sec: #4A4A4A; --accent: #002344; --border: #E5E5E3; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--main); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--main); line-height: 1.6; -webkit-font-smoothing: antialiased; }
         h1, h2, h3 { font-weight: 600; letter-spacing: -0.02em; }
         
         nav { padding: 1.2rem 8%; display: flex; justify-content: space-between; align-items: center; position: fixed; width: 100%; top: 0; background: rgba(249,249,248,0.95); backdrop-filter: blur(10px); z-index: 100; border-bottom: 1px solid var(--border); }
         .logo { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3.5px; }
 
-        section { padding: 8vh 12% 4vh; border-bottom: 1px solid var(--border); }
-        .hero { min-height: 45vh; display: flex; flex-direction: column; justify-content: center; padding-top: 10vh; border-bottom: none; }
-        .hero h1 { font-size: clamp(2.2rem, 4.5vw, 3.5rem); line-height: 1.1; margin-bottom: 1.5rem; max-width: 1000px; }
-        .hero p { font-size: 1.2rem; color: var(--sec); max-width: 720px; border-left: 1px solid var(--accent); padding-left: 1.8rem; font-weight: 400; }
+        section { padding: 12vh 12% 8vh; border-bottom: 1px solid var(--border); }
+        .hero { min-height: 55vh; display: flex; flex-direction: column; justify-content: center; padding-top: 15vh; border-bottom: none; }
+        .hero h1 { font-size: clamp(2.2rem, 4.5vw, 3.8rem); line-height: 1.1; margin-bottom: 1.8rem; max-width: 1000px; }
+        .hero p { font-size: 1.25rem; color: var(--sec); max-width: 750px; border-left: 1px solid var(--accent); padding-left: 2rem; font-weight: 400; }
 
-        .logic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 3rem; margin-top: 2.5rem; }
-        .logic-card { border-top: 1px solid var(--main); padding-top: 1.2rem; }
-        .logic-card span { font-size: 0.6rem; text-transform: uppercase; font-weight: 700; letter-spacing: 1.5px; color: var(--sec); display: block; margin-bottom: 0.8rem; }
-        .logic-card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
-        .logic-card p { font-size: 0.95rem; color: var(--sec); }
+        .logic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem; margin-top: 4rem; }
+        .logic-card { border-top: 1px solid var(--main); padding-top: 1.5rem; }
+        .logic-card span { font-size: 0.65rem; text-transform: uppercase; font-weight: 700; letter-spacing: 2px; color: var(--sec); display: block; margin-bottom: 1rem; }
+        .logic-card h3 { font-size: 1.7rem; margin-bottom: 1.2rem; line-height: 1.2; }
+        .logic-card p { font-size: 1rem; color: var(--sec); }
 
-        .manifesto-block { background: #F1F1EF; padding: 5vh 12%; border-bottom: 1px solid var(--border); }
-        .manifesto-content { max-width: 950px; }
-        .manifesto-content h2 { font-size: 2.2rem; margin-bottom: 1.2rem; }
-        .manifesto-content p { font-size: 1.15rem; color: var(--sec); font-weight: 500; line-height: 1.6; }
+        .manifesto-block { background: #F1F1EF; padding: 10vh 12%; border-bottom: 1px solid var(--border); }
+        .manifesto-content { max-width: 900px; }
+        .manifesto-content h2 { font-size: 2.4rem; margin-bottom: 1.5rem; }
+        .manifesto-content p { font-size: 1.2rem; color: var(--sec); font-weight: 500; line-height: 1.7; }
 
-        .contact-section { padding: 5vh 12%; border-bottom: none; }
-        .linkedin-link { display: inline-flex; align-items: center; text-decoration: none; color: var(--main); font-weight: 600; font-size: 0.9rem; transition: opacity 0.2s; }
+        .contact-section { padding: 8vh 12%; border-bottom: none; }
+        .linkedin-link { display: inline-flex; align-items: center; text-decoration: none; color: var(--main); font-weight: 600; font-size: 0.95rem; transition: opacity 0.2s; }
         .linkedin-link:hover { opacity: 0.7; }
-        .linkedin-link svg { width: 20px; height: 20px; margin-right: 10px; fill: var(--accent); }
+        .linkedin-link svg { width: 22px; height: 22px; margin-right: 12px; fill: var(--accent); }
 
-        footer { padding: 4rem 12%; border-top: 1px solid var(--border); background: var(--bg); }
-        .disclaimer { font-size: 0.7rem; color: #999; line-height: 1.6; margin-top: 1.5rem; }
+        footer { padding: 5rem 12%; border-top: 1px solid var(--border); background: var(--bg); }
+        .disclaimer { font-size: 0.75rem; color: #999; line-height: 1.7; margin-top: 2rem; }
 
-        .reveal { opacity: 0; transform: translateY(15px); transition: all 0.6s ease-out; }
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
         .reveal.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
@@ -62,7 +62,7 @@
             <div class="logic-card">
                 <span>Framework</span>
                 <h3>Three Engines</h3>
-                <p>Execution across three layers: catching structural trends, positioning for upside, and maintaining strategic cash.</p>
+                <p>Execution across three layers: catching structural trends, positioning for upside, and maintaining strategic cash optionality.</p>
             </div>
             <div class="logic-card">
                 <span>Constraint</span>
@@ -74,9 +74,9 @@
 
     <section class="manifesto-block reveal">
         <div class="manifesto-content">
-            <span style="font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;">Strategic Intent</span>
-            <h2 style="margin-top: 1rem;">Conviction over Consistency.</h2>
-            <p>Silvius Capital explicitly rejects the management of quarterly optics and the artificial smoothing of returns. We concentrate capital where timing and truth align to create high-stakes upside.</p>
+            <span style="font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Strategic Intent</span>
+            <h2 style="margin-top: 1.2rem;">Conviction over Consistency.</h2>
+            <p>Silvius Capital explicitly rejects the management of quarterly optics and the artificial smoothing of returns. We concentrate capital where macro regimes, fundamentals, and timing align to create high-stakes upside.</p>
         </div>
     </section>
 
@@ -84,16 +84,16 @@
         <div class="logic-grid">
             <div class="logic-card">
                 <span>Protocol</span>
-                <h3>Strict Discipline</h3>
-                <p>Investment is a process of elimination. Every position is governed by a 25-point filter to remove narrative bias and emotional noise.</p>
+                <h3>Systemic Filters</h3>
+                <p>Every move is governed by a 25-point checklist across five vectors: Structural Foundation, Financial Strength, Growth Drivers, Valuation Asymmetry, and Catalyst Recognition.</p>
             </div>
             <div class="logic-card">
-                <span>Research</span>
-                <h3>Structural Insight</h3>
-                <p>We look past the obvious names to find the infrastructure powering them. We penetrate supply chains to identify value before it is repriced by the crowd.</p>
+                <span>Research Focus</span>
+                <h3>Supply Chain Depth</h3>
+                <p>We penetrate complex supply chains—currently in Photonics and Robotics—to identify critical infrastructure before it is repriced by the crowd.</p>
             </div>
             <div class="logic-card">
-                <span>Risk</span>
+                <span>Risk Model</span>
                 <h3>Strategic Patience</h3>
                 <p>In dislocated markets, cash is a weapon. It allows us to act when others are forced to react. Survival is the foundation of long-term capture.</p>
             </div>
@@ -110,9 +110,9 @@
     <footer>
         <div class="logo" style="opacity: 0.4;">Silvius Holdings</div>
         <div class="disclaimer">
-            Silvius Capital is a private investment vehicle. Silvius Holdings serves as the parent administrative entity. This platform is for internal documentation and is not open to external investment. Past performance does not guarantee future results.
+            Silvius Capital is a proprietary investment vehicle. Silvius Holdings serves as the parent administrative entity. This platform is for internal documentation and is not open to external investment. Past performance does not guarantee future results.
         </div>
-        <p style="margin-top: 3rem; font-size: 0.7rem; color: #bbb;">&copy; 2026 Silvius Holdings. All Rights Reserved.</p>
+        <p style="margin-top: 3.5rem; font-size: 0.75rem; color: #bbb;">&copy; 2026 Silvius Holdings. All Rights Reserved.</p>
     </footer>
 
     <script>
