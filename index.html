@@ -4,175 +4,109 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Silvius Capital | Investment Mandate</title>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-color: #ffffff;
-            --text-main: #111111;
-            --text-secondary: #555555;
-            --accent: #002d62; 
-            --border: #f2f2f2;
-        }
-
+        :root { --bg: #ffffff; --main: #111; --sec: #444; --accent: #002d62; --border: #eee; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.8;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--main); line-height: 1.6; -webkit-font-smoothing: antialiased; }
         h1, h2, h3 { font-family: 'EB Garamond', serif; font-weight: 500; letter-spacing: -0.01em; }
-
-        nav {
-            padding: 1.8rem 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(15px);
-            z-index: 100;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .logo { font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 4px; color: var(--text-main); }
-        .nav-tag { font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; }
-
-        section { padding: 18vh 12% 10vh; min-height: 85vh; display: flex; flex-direction: column; justify-content: center; }
-
-        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 2.5rem; line-height: 1.05; }
-        .hero p { font-size: 1.4rem; color: var(--text-secondary); max-width: 850px; border-left: 1px solid var(--accent); padding-left: 2.5rem; font-family: 'EB Garamond', serif; }
-
-        .manifesto { background: #fafafa; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
         
-        /* FIXED ALIGNMENT SYSTEM */
-        .stat-row { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-            gap: 4rem; 
-            margin-bottom: 6rem;
-            align-items: start;
-        }
+        nav { padding: 1.5rem 8%; display: flex; justify-content: space-between; align-items: center; position: fixed; width: 100%; top: 0; background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); z-index: 100; border-bottom: 1px solid var(--border); }
+        .logo { font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; }
+
+        section { padding: 12vh 10% 8vh; border-bottom: 1px solid var(--border); }
         
-        .stat-item { 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: flex-start;
-        }
+        .hero { min-height: 60vh; display: flex; flex-direction: column; justify-content: center; padding-top: 15vh; }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 2rem; max-width: 900px; }
+        .hero p { font-size: 1.2rem; color: var(--sec); max-width: 750px; border-left: 2px solid var(--accent); padding-left: 1.5rem; font-family: 'EB Garamond', serif; font-style: italic; }
 
-        .stat-number { 
-            font-size: clamp(2.5rem, 4vw, 3.5rem); 
-            font-family: 'EB Garamond'; 
-            color: var(--accent); 
-            border-bottom: 1px solid #ddd; 
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-            line-height: 1.1;
-            white-space: nowrap;
-        }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 3rem; margin-top: 4rem; }
+        .stat-box { border-bottom: 1px solid var(--main); padding-bottom: 1rem; }
+        .stat-box h2 { font-size: 2.2rem; color: var(--accent); margin-bottom: 0.5rem; }
+        .stat-box span { font-size: 0.65rem; text-transform: uppercase; font-weight: 700; letter-spacing: 1.5px; color: var(--sec); }
 
-        .stat-label { 
-            font-size: 0.7rem; 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-            color: var(--text-secondary); 
-            font-weight: 600; 
-            line-height: 1.4;
-        }
+        .truth-section { background: #fafafa; }
+        .truth-card { padding: 2rem; border: 1px solid var(--border); background: #fff; }
+        .truth-card h4 { font-size: 0.7rem; text-transform: uppercase; color: #999; margin-bottom: 1rem; letter-spacing: 1px; }
+        .truth-card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        .truth-card p { font-size: 0.95rem; color: var(--sec); }
 
-        .mandate-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 6rem; }
-        .pillar h3 { font-size: 2.2rem; margin-bottom: 1.5rem; color: var(--text-main); }
-        .pillar p { font-size: 1.05rem; color: var(--text-secondary); font-weight: 300; }
+        footer { padding: 6rem 10% 4rem; font-size: 0.75rem; color: #888; }
+        .disclaimer { max-width: 800px; line-height: 1.5; margin-top: 2rem; opacity: 0.6; }
 
-        footer { padding: 10rem 12% 6rem; background: #ffffff; color: #888; border-top: 1px solid var(--border); }
-        .disclaimer { font-size: 0.75rem; max-width: 800px; margin-top: 4rem; line-height: 1.6; color: #bbb; }
-
-        .reveal { opacity: 0; transform: translateY(40px); transition: all 1.2s cubic-bezier(0.2, 0.6, 0.2, 1); }
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
         .reveal.visible { opacity: 1; transform: translateY(0); }
-
-        @media (max-width: 768px) {
-            section { padding: 15vh 8% 5vh; }
-            .stat-row { gap: 2rem; }
-        }
     </style>
 </head>
 <body>
 
     <nav>
         <div class="logo">Silvius Capital</div>
-        <div class="nav-tag">Private Investment Vehicle</div>
+        <div style="font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Proprietary Mandate</div>
     </nav>
 
     <section class="hero reveal">
-        <h1>Betting Against the <br>Blind Spots of Consensus.</h1>
-        <p>The world does not move in straight lines; it bends under pressure. Silvius Capital identifies where that pressure is building and allocates before the release. We position where the world is actually going, not where it has been.</p>
-    </section>
-
-    <section class="manifesto reveal">
-        <div class="stat-row">
-            <div class="stat-item">
-                <span class="stat-number">Power Law</span>
-                <span class="stat-label">Structural Optimization</span>
+        <h1>The world does not move in straight lines; <br>it bends under pressure.</h1>
+        <p>Silvius Capital identifies where that pressure is building and allocates before the release. We position against the structural blind spots of consensus to capture power-law outcomes.</p>
+        
+        <div class="grid-3">
+            <div class="stat-box">
+                <h2>Power Law</h2>
+                <span>The Goal is Dominance over time</span>
             </div>
-            <div class="stat-item">
-                <span class="stat-number">Regime Shift</span>
-                <span class="stat-label">Execution Architecture</span>
+            <div class="stat-box">
+                <h2>Regime Shift</h2>
+                <span>Structural vs Cyclical Displacement</span>
             </div>
-            <div class="stat-item">
-                <span class="stat-number">Capital Velocity</span>
-                <span class="stat-label">Productivity Hurdle</span>
+            <div class="stat-box">
+                <h2>Velocity</h2>
+                <span>Return-Based Patience</span>
             </div>
         </div>
+    </section>
 
-        <div class="mandate-grid">
-            <div class="pillar">
-                <h3>The Rejection of Imitation</h3>
-                <p>A portfolio designed to avoid drawdowns is structurally incapable of producing exceptional results. We accept volatility as the necessary price of capturing non-linear change. The objective is not stability; the objective is dominance over time.</p>
+    <section class="truth-section reveal">
+        <h2 style="font-size: 2.5rem; margin-bottom: 3rem;">Contrarian Truths</h2>
+        <div class="grid-3">
+            <div class="truth-card">
+                <h4>01. Precision Sizing</h4>
+                <h3>Capital is Not Neutral</h3>
+                <p>We reject linear escalation. Incremental conviction does not earn incremental capital. Only clear asymmetry and tightening visibility justify concentration.</p>
             </div>
-            <div class="pillar">
-                <h3>Systemic Filter Rigor</h3>
-                <p>Accuracy matters in a concentrated portfolio. Every allocation is governed by a proprietary 25-point filter scoring system. Eligibility is determined by truth-density and economic engines, not narratives or sentiment.</p>
+            <div class="truth-card">
+                <h4>02. Optionality</h4>
+                <h3>Liquidity is Strategic</h3>
+                <p>In dislocated markets, cash is not idle. It is a mechanism to absorb volatility and act decisively when forced selling sets price.</p>
+            </div>
+            <div class="truth-card">
+                <h4>03. The Filter</h4>
+                <h3>Scoring over Sentiment</h3>
+                <p>Every allocation must clear a 25-point systemic filter. If capital productivity fails our hurdle, the position is exited to preserve velocity.</p>
             </div>
         </div>
     </section>
 
     <section class="reveal">
-        <h2>Capital Architecture</h2>
-        <div class="mandate-grid">
-            <div class="pillar">
-                <h3>Secular Inflection</h3>
-                <p>Exposure to the platforms and systems that pull the future forward through software leverage and scale. We target structural shifts that create asymmetric opportunities when a new operating model replaces an old one.</p>
-            </div>
-            <div class="pillar">
-                <h3>The Kill Switch</h3>
-                <p>Patience is return-based, not time-based. If a setup no longer offers a power-law outcome or fails to maintain our internal CAGR threshold, capital is withheld or redeployed to preserve velocity. There is no middle state.</p>
+        <div class="grid-3">
+            <div style="grid-column: span 2;">
+                <h3 style="font-size: 2.5rem; margin-bottom: 1.5rem;">The Rejection of Imitation</h3>
+                <p style="font-size: 1.1rem; color: var(--sec);">A strategy designed to avoid drawdowns is structurally incapable of capturing non-linear change. We accept volatility as the necessary price of capturing secular winners that redefine industry economics through software leverage and scale.</p>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="logo" style="margin-bottom: 1.5rem; opacity: 0.6;">Silvius Holdings</div>
-        <p style="font-size: 0.85rem; letter-spacing: 1px;">Proprietary Capital Management & Research.</p>
+        <div class="logo" style="margin-bottom: 1.5rem; opacity: 0.5;">Silvius Holdings</div>
         <div class="disclaimer">
-            Silvius Capital is a private investment vehicle. Silvius Holdings operates as the parent administrative entity. This platform is for internal documentation and informational purposes only. It does not constitute an offer to sell or a solicitation of an offer to buy any security. Silvius Capital is not open to external investment.
+            Silvius Capital is a private investment vehicle. Silvius Holdings serves as the parent administrative entity. This platform is for internal documentation and is not open to external investment. Past performance does not guarantee future results.
         </div>
-        <p style="margin-top: 4rem; font-size: 0.7rem; opacity: 0.5;">&copy; 2026 Silvius Holdings. All Rights Reserved.</p>
+        <p style="margin-top: 3rem;">&copy; 2026 Silvius Holdings. All Rights Reserved.</p>
     </footer>
 
     <script>
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
         }, { threshold: 0.1 });
-
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
