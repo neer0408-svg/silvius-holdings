@@ -26,7 +26,6 @@
             --border: #E0E0E0; 
         }
 
-        /* CUSTOM SELECTION COLOR */
         ::selection { background: var(--active); color: #FFFFFF; }
         html { scroll-behavior: smooth; }
 
@@ -42,7 +41,7 @@
             overflow-x: hidden;
         }
 
-        /* TEXTURE: Premium Paper Grain */
+        /* TEXTURE */
         body::before {
             content: "";
             position: fixed;
@@ -119,13 +118,15 @@
         /* SECTIONS */
         section { padding: 6rem 12% 5rem; position: relative; }
 
-        /* HERO */
+        /* HERO - REVISED FOR TIGHTER LAYOUT */
         .hero { 
-            min-height: 85vh; 
+            /* FIXED: Reduced from 85vh to 60vh to pull the next section up */
+            min-height: 60vh; 
             display: flex; 
             flex-direction: column; 
-            justify-content: center; 
-            padding-top: 6rem;
+            justify-content: center; /* Keeps it centered in the reduced space */
+            padding-top: 8rem;
+            padding-bottom: 4rem;
         }
 
         .hero h1 { 
@@ -139,17 +140,18 @@
             font-size: 1.2rem; 
             color: var(--sec); 
             max-width: 700px; 
-            margin-bottom: 2rem; /* Reduced from 4rem */
+            margin-bottom: 0; /* Removing margin because the scroll indicator now handles the gap */
             line-height: 1.7;
             border-left: 2px solid var(--main);
             padding-left: 1.5rem;
         }
 
-        /* SCROLL HINT */
+        /* SCROLL HINT - REVISED TO SIT DIRECTLY UNDER TEXT */
         .scroll-indicator {
-            position: absolute;
-            bottom: 6rem; /* Increased from 3rem to move it up */
-            left: 8%;
+            /* FIXED: Changed from absolute to relative. It now sits in the flow. */
+            position: relative; 
+            margin-top: 3rem; /* Exact distance from the text above */
+            left: 0;
             display: flex;
             align-items: center;
             opacity: 0.5;
@@ -157,6 +159,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 600;
+            padding-left: 1.6rem; /* Aligns with the text inside the border-left */
         }
         .scroll-line {
             width: 40px;
@@ -212,7 +215,6 @@
             position: relative;
         }
 
-        /* The Section Symbol Divider */
         .divider-icon {
             position: absolute;
             top: -12px;
@@ -273,18 +275,18 @@
         .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
         .reveal.visible { opacity: 1; transform: translateY(0); }
 
-        /* MOBILE & PRINT STYLES */
+        /* MOBILE & PRINT */
         @media (max-width: 768px) {
             nav { padding: 1rem 6%; }
             section, .execution-zone, footer { padding: 4rem 6%; }
+            .hero { min-height: auto; padding-top: 8rem; } /* Auto height for mobile */
             .hero h1 { font-size: 2.5rem; }
             .manifesto-content h2 { font-size: 2rem; }
-            .scroll-indicator { left: 6%; bottom: 4rem; } /* Adjusted for mobile */
+            .scroll-indicator { padding-left: 0; }
             footer { justify-content: flex-start; }
             .divider-icon { background: linear-gradient(180deg, var(--zone) 50%, #EAEAEA 50%); } 
         }
 
-        /* PRINT OPTIMIZATION (God Mode) */
         @media print {
             nav, .scroll-indicator, .contact-section, footer, .linkedin-link { display: none; }
             body { background: white; color: black; }
