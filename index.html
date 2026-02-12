@@ -20,14 +20,20 @@
             --main: #1A1A1A; 
             --sec: #555555; 
             --accent: #0A2342; 
-            --active: #2E7D32; 
+            --active: #2E7D32; /* Deep Signal Green */
             --border: #E0E0E0; 
+        }
+
+        /* CUSTOM SELECTION COLOR (The "Subtle Flex") */
+        ::selection {
+            background: var(--active); 
+            color: #FFFFFF;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body { 
-            font-family: 'Inter', sans-serif; /* Default to Body Font */
+            font-family: 'Inter', sans-serif;
             background: var(--bg); 
             color: var(--main); 
             line-height: 1.6; 
@@ -36,7 +42,7 @@
             overflow-x: hidden;
         }
 
-        /* TEXTURE */
+        /* TEXTURE: Premium Paper Grain */
         body::before {
             content: "";
             position: fixed;
@@ -47,22 +53,17 @@
             z-index: -1;
         }
 
-        /* TYPOGRAPHY: STRICT 2-FONT SYSTEM */
-        
-        /* 1. HEADINGS (Newsreader) */
+        /* TYPOGRAPHY */
         h1, h2, h3 { 
             font-family: 'Newsreader', serif; 
             font-weight: 500; 
             color: var(--main);
             letter-spacing: -0.01em; 
-            font-feature-settings: "liga" 0; 
+            font-feature-settings: "liga" 0, "onum" 1; /* Old Style Figures enabled */
             line-height: 1.15;
         }
 
-        /* 2. BODY & UI (Inter) - Explicitly set for consistency */
-        p, a, span, nav, div, footer {
-            font-family: 'Inter', sans-serif;
-        }
+        p, a, span, nav, div, footer { font-family: 'Inter', sans-serif; }
 
         /* NAV */
         nav { 
@@ -128,10 +129,9 @@
         }
 
         .hero h1 { 
-            /* FIX: Increased max-width to 1400px to force 2 lines instead of 3 */
             font-size: clamp(3rem, 5.5vw, 4.8rem); 
             margin-bottom: 2rem; 
-            max-width: 1400px; 
+            max-width: 1400px; /* Forces 2-line layout */
             width: 100%;
         }
 
@@ -182,10 +182,11 @@
         .logic-card:hover { transform: translateY(-4px); border-color: var(--main); }
 
         .logic-card span { 
-            font-size: 0.65rem; 
-            text-transform: uppercase; 
+            /* Real Small Caps */
+            font-size: 0.7rem; 
+            font-variant: small-caps; 
             font-weight: 600; 
-            letter-spacing: 2px; 
+            letter-spacing: 0.05em; 
             color: var(--sec); 
             margin-bottom: 1rem; 
             display: block;
@@ -209,19 +210,33 @@
             padding: 8rem 12%; 
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        /* The Section Symbol Divider */
+        .divider-icon {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--zone); 
+            padding: 0 15px;
+            color: #999;
+            font-family: 'Newsreader', serif;
+            font-style: italic;
+            font-size: 1.2rem;
         }
 
         .manifesto-content { max-width: 900px; margin-bottom: 6rem; }
         
-        /* FIX: Added margin-bottom to the span to separate it from the H2 */
         .manifesto-content span {
-            font-size: 0.6rem; 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            letter-spacing: 1.5px; 
+            font-size: 0.7rem; 
+            font-weight: 600; 
+            font-variant: small-caps;
+            letter-spacing: 0.05em; 
             color: var(--sec);
             display: block;
-            margin-bottom: 1.5rem; /* Increased breathing room */
+            margin-bottom: 1.5rem;
         }
 
         .manifesto-content h2 { 
@@ -234,7 +249,6 @@
         /* FOOTER */
         .contact-section { padding-top: 6rem; padding-bottom: 6rem; }
         
-        /* FIX: Switched to Inter (Sans-Serif) to match body font strictly */
         .linkedin-link { 
             display: inline-flex; align-items: center; 
             text-decoration: none; color: var(--main); 
@@ -253,6 +267,7 @@
             font-size: 0.7rem;
             display: flex;
             justify-content: space-between;
+            align-items: flex-end;
         }
 
         /* ANIMATION */
@@ -266,7 +281,8 @@
             .hero h1 { font-size: 2.5rem; }
             .manifesto-content h2 { font-size: 2rem; }
             .scroll-indicator { left: 6%; }
-            footer { flex-direction: column; gap: 1rem; }
+            footer { flex-direction: column; gap: 2rem; align-items: flex-start; }
+            .divider-icon { background: linear-gradient(180deg, var(--zone) 50%, #EAEAEA 50%); } 
         }
     </style>
 </head>
@@ -291,6 +307,8 @@
     </section>
 
     <div class="execution-zone reveal">
+        <div class="divider-icon">§</div>
+        
         <div class="manifesto-content">
             <span>Strategic Intent</span>
             <h2>Conviction over Consistency.</h2>
@@ -338,7 +356,9 @@
 
     <footer>
         <div>&copy; 2026 Silvius Holdings.</div>
-        <div>Internal Documentation. Not for Public Distribution.</div>
+        <div style="text-align: right; opacity: 0.6;">
+            Internal Documentation.<br>Not for Public Distribution.
+        </div>
     </footer>
 
     <script>
