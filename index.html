@@ -3,8 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta property="og:title" content="Silvius Capital | Proprietary Mandate">
+    <meta property="og:description" content="Identifying fundamental shifts that consensus ignores. Positioning for the inflection.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#FAFAF9">
+
     <title>Silvius Capital | Investment Mandate</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root { 
             --bg: #FAFAF9; 
@@ -14,7 +22,6 @@
             --accent: #0A2342; /* Deep Navy */
             --active: #2E7D32; /* Signal Green */
             --border: #E0E0E0; 
-            --card-hover: rgba(0, 35, 68, 0.03);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -26,14 +33,28 @@
             line-height: 1.6; 
             -webkit-font-smoothing: antialiased; 
             overflow-x: hidden;
+            position: relative;
         }
 
-        /* Typography Upgrades */
+        /* --- TEXTURE: The "Premium Paper" Grain Effect --- */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* --- TYPOGRAPHY FIXES --- */
         h1, h2, h3 { 
             font-family: 'Playfair Display', serif; 
             font-weight: 600; 
-            letter-spacing: -0.01em; 
             color: var(--main);
+            /* FIX: Disables "cooked" ligatures (fi, fl) */
+            font-variant-ligatures: none;
+            font-feature-settings: "liga" 0; 
         }
 
         /* Navigation - Enhanced Glassmorphism */
@@ -74,8 +95,7 @@
         }
 
         .status-dot { 
-            width: 6px; 
-            height: 6px; 
+            width: 6px; height: 6px; 
             background: var(--active); 
             border-radius: 50%; 
             margin-right: 8px; 
@@ -86,8 +106,7 @@
             content: ''; 
             position: absolute; 
             top: 0; left: 0;
-            width: 100%; 
-            height: 100%; 
+            width: 100%; height: 100%; 
             background: var(--active); 
             border-radius: 50%; 
             animation: pulse 2.5s infinite cubic-bezier(0.4, 0, 0.2, 1); 
@@ -111,7 +130,9 @@
             font-size: clamp(2.2rem, 4.5vw, 3.8rem); 
             line-height: 1.1; 
             margin-bottom: 1.5rem; 
-            max-width: 950px; 
+            max-width: 950px;
+            /* FIX: Slightly relax spacing to prevent collision */
+            letter-spacing: 0.01em; 
         }
 
         .hero p { 
@@ -132,19 +153,18 @@
             margin-top: 3rem; 
         }
 
-        /* Logic Cards - The Interactive Upgrade */
+        /* Logic Cards - Interactive Physics */
         .logic-card { 
             border-top: 1px solid var(--border); 
             padding-top: 1.5rem; 
             padding-bottom: 1.5rem;
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* "Premium" feel physics */
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); 
             cursor: default;
         }
 
         .logic-card:hover {
-            transform: translateY(-6px); /* The "Lift" */
+            transform: translateY(-6px);
             border-top: 1px solid var(--accent);
-            /* Subtle shadow to create depth */
             box-shadow: 0 15px 30px -10px rgba(0,0,0,0.05); 
         }
 
@@ -163,6 +183,7 @@
             font-size: 1.5rem; 
             margin-bottom: 0.8rem; 
             font-weight: 500;
+            letter-spacing: 0.02em; /* Added breathing room */
         }
 
         .logic-card p { 
@@ -174,7 +195,7 @@
 
         /* Unified Zone with Gradient */
         .execution-zone { 
-            background: linear-gradient(180deg, var(--zone) 0%, #EAEAEA 100%); /* Subtle gradient */
+            background: linear-gradient(180deg, var(--zone) 0%, #EAEAEA 100%); 
             padding: 6rem 12% 6rem; 
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border); 
@@ -186,6 +207,7 @@
             font-size: 2.4rem; 
             margin-bottom: 1.2rem; 
             margin-top: 1rem;
+            letter-spacing: 0.01em;
         }
         
         .manifesto-content p { 
@@ -230,6 +252,35 @@
         }
         
         .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* --- MOBILE OPTIMIZATION --- */
+        @media (max-width: 768px) {
+            nav { padding: 1rem 6%; }
+            section, .execution-zone, .contact-section, footer {
+                padding-left: 6%;
+                padding-right: 6%;
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+            
+            .hero {
+                padding-top: 8rem;
+                min-height: auto;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+                line-height: 1.2;
+            }
+            
+            .manifesto-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .logic-grid {
+                gap: 2rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -311,7 +362,7 @@
             entries.forEach(entry => { 
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    observer.unobserve(entry.target); // Only animate once per session for cleaner feel
+                    observer.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.1 });
