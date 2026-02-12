@@ -212,7 +212,6 @@
             position: relative;
         }
 
-        /* The Section Symbol Divider */
         .divider-icon {
             position: absolute;
             top: -12px;
@@ -265,7 +264,7 @@
             color: #999;
             font-size: 0.7rem;
             display: flex;
-            justify-content: center; /* Centered for balance */
+            justify-content: center;
             align-items: center;
         }
 
@@ -273,7 +272,7 @@
         .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
         .reveal.visible { opacity: 1; transform: translateY(0); }
 
-        /* MOBILE & PRINT STYLES */
+        /* MOBILE & PRINT */
         @media (max-width: 768px) {
             nav { padding: 1rem 6%; }
             section, .execution-zone, footer { padding: 4rem 6%; }
@@ -284,7 +283,6 @@
             .divider-icon { background: linear-gradient(180deg, var(--zone) 50%, #EAEAEA 50%); } 
         }
 
-        /* PRINT OPTIMIZATION (God Mode) */
         @media print {
             nav, .scroll-indicator, .contact-section, footer, .linkedin-link { display: none; }
             body { background: white; color: black; }
@@ -355,6 +353,11 @@
                 <span>Research Focus</span>
                 <h3>Supply Chain Depth</h3>
                 <p>We penetrate complex supply chains currently in Photonics and Robotics to identify critical infrastructure before it is repriced by the crowd.</p>
+            </div>
+            <div class="logic-card" style="border-top: none; border-bottom: 1px solid #E0E0E0; padding-bottom: 1.5rem;">
+                <span>Risk Model</span>
+                <h3>Strategic Patience</h3>
+                <p>In dislocated markets, cash is a weapon. It allows us to act when others are forced to react. Survival is the foundation of long-term capture.</p>
             </div>
         </div>
         
