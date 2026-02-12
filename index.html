@@ -19,8 +19,8 @@
         .status-dot::after { content: ''; position: absolute; width: 100%; height: 100%; background: var(--active); border-radius: 50%; animation: pulse 2s infinite; }
         @keyframes pulse { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(2.5); opacity: 0; } }
 
-        section { padding: 5rem 12% 3rem; border-bottom: 1px solid var(--border); }
-        .hero { min-height: 45vh; display: flex; flex-direction: column; justify-content: flex-end; padding-top: 8rem; border-bottom: none; }
+        section { padding: 4rem 12% 2rem; border-bottom: 1px solid var(--border); }
+        .hero { min-height: 40vh; display: flex; flex-direction: column; justify-content: flex-end; padding-top: 8rem; border-bottom: none; }
         .hero h1 { font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.1; margin-bottom: 1.2rem; max-width: 900px; }
         .hero p { font-size: 1.15rem; color: var(--sec); max-width: 680px; border-left: 1px solid var(--accent); padding-left: 1.5rem; }
 
@@ -30,12 +30,11 @@
         .logic-card h3 { font-size: 1.4rem; margin-bottom: 0.8rem; }
         .logic-card p { font-size: 0.9rem; color: var(--sec); }
 
-        .manifesto-block { background: var(--zone); padding: 5rem 12%; border-bottom: 1px solid var(--border); }
-        .manifesto-content { max-width: 850px; }
+        /* Unified Zone to Fix the Gap */
+        .execution-zone { background: var(--zone); padding: 4rem 12% 5rem; border-bottom: 1px solid var(--border); }
+        .manifesto-content { max-width: 850px; margin-bottom: 4rem; }
         .manifesto-content h2 { font-size: 2rem; margin-bottom: 1rem; }
         .manifesto-content p { font-size: 1.1rem; color: var(--sec); font-weight: 500; line-height: 1.6; }
-
-        .technical-zone { background: var(--zone); }
 
         .contact-section { padding: 4rem 12%; border-bottom: none; }
         .linkedin-link { display: inline-flex; align-items: center; text-decoration: none; color: var(--main); font-weight: 600; font-size: 0.85rem; }
@@ -44,7 +43,7 @@
         footer { padding: 4rem 12%; border-top: 1px solid var(--border); background: var(--bg); }
         .disclaimer { font-size: 0.65rem; color: #999; line-height: 1.6; margin-top: 1rem; }
 
-        .reveal { opacity: 0; transform: translateY(15px); transition: all 0.6s ease-out; }
+        .reveal { opacity: 0; transform: translateY(10px); transition: all 0.5s ease-out; }
         .reveal.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
@@ -81,16 +80,14 @@
         </div>
     </section>
 
-    <section class="manifesto-block reveal">
+    <div class="execution-zone reveal">
         <div class="manifesto-content">
             <span style="font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;">Strategic Intent</span>
             <h2 style="margin-top: 0.8rem;">Conviction over Consistency.</h2>
             <p>Silvius Capital explicitly rejects the management of quarterly optics and the artificial smoothing of returns. We concentrate capital where macro regimes, fundamentals, and timing align to create high-stakes upside.</p>
         </div>
-    </section>
 
-    <section class="technical-zone reveal">
-        <div class="logic-grid">
+        <div class="logic-grid" style="margin-top: 0;">
             <div class="logic-card">
                 <span>Protocol</span>
                 <h3>Systemic Filters</h3>
@@ -107,7 +104,7 @@
                 <p>In dislocated markets, cash is a weapon. It allows us to act when others are forced to react. Survival is the foundation of long-term capture.</p>
             </div>
         </div>
-    </section>
+    </div>
 
     <section class="contact-section reveal">
         <a href="https://www.linkedin.com/company/silvius-capital/?viewAsMember=true" target="_blank" class="linkedin-link">
