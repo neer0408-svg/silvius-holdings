@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 font-family=%22serif%22>§</text></svg>">
+    
     <meta property="og:title" content="Silvius Capital | Proprietary Mandate">
     <meta property="og:description" content="Identifying fundamental shifts that consensus ignores.">
     <meta property="og:type" content="website">
@@ -20,15 +22,13 @@
             --main: #1A1A1A; 
             --sec: #555555; 
             --accent: #0A2342; 
-            --active: #2E7D32; /* Deep Signal Green */
+            --active: #2E7D32; 
             --border: #E0E0E0; 
         }
 
-        /* CUSTOM SELECTION COLOR (The "Subtle Flex") */
-        ::selection {
-            background: var(--active); 
-            color: #FFFFFF;
-        }
+        /* CUSTOM SELECTION COLOR */
+        ::selection { background: var(--active); color: #FFFFFF; }
+        html { scroll-behavior: smooth; }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -59,7 +59,7 @@
             font-weight: 500; 
             color: var(--main);
             letter-spacing: -0.01em; 
-            font-feature-settings: "liga" 0, "onum" 1; /* Old Style Figures enabled */
+            font-feature-settings: "liga" 0, "onum" 1; 
             line-height: 1.15;
         }
 
@@ -131,7 +131,7 @@
         .hero h1 { 
             font-size: clamp(3rem, 5.5vw, 4.8rem); 
             margin-bottom: 2rem; 
-            max-width: 1400px; /* Forces 2-line layout */
+            max-width: 1400px; 
             width: 100%;
         }
 
@@ -182,7 +182,6 @@
         .logic-card:hover { transform: translateY(-4px); border-color: var(--main); }
 
         .logic-card span { 
-            /* Real Small Caps */
             font-size: 0.7rem; 
             font-variant: small-caps; 
             font-weight: 600; 
@@ -266,23 +265,34 @@
             color: #999;
             font-size: 0.7rem;
             display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
+            justify-content: center; /* Centered for balance */
+            align-items: center;
         }
 
         /* ANIMATION */
         .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
         .reveal.visible { opacity: 1; transform: translateY(0); }
 
-        /* MOBILE */
+        /* MOBILE & PRINT STYLES */
         @media (max-width: 768px) {
             nav { padding: 1rem 6%; }
             section, .execution-zone, footer { padding: 4rem 6%; }
             .hero h1 { font-size: 2.5rem; }
             .manifesto-content h2 { font-size: 2rem; }
             .scroll-indicator { left: 6%; }
-            footer { flex-direction: column; gap: 2rem; align-items: flex-start; }
+            footer { justify-content: flex-start; }
             .divider-icon { background: linear-gradient(180deg, var(--zone) 50%, #EAEAEA 50%); } 
+        }
+
+        /* PRINT OPTIMIZATION (God Mode) */
+        @media print {
+            nav, .scroll-indicator, .contact-section, footer, .linkedin-link { display: none; }
+            body { background: white; color: black; }
+            section, .execution-zone { padding: 2rem 0; border: none; }
+            h1, h2, h3 { color: black; }
+            .manifesto-content { margin-bottom: 2rem; }
+            body::before { display: none; } 
+            .logic-card { page-break-inside: avoid; border-top: 1px solid #000; }
         }
     </style>
 </head>
@@ -356,9 +366,6 @@
 
     <footer>
         <div>&copy; 2026 Silvius Holdings.</div>
-        <div style="text-align: right; opacity: 0.6;">
-            Internal Documentation.<br>Not for Public Distribution.
-        </div>
     </footer>
 
     <script>
