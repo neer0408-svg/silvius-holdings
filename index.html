@@ -11,7 +11,7 @@
 
     <title>Silvius Capital | Investment Mandate</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
     
     <style>
         :root { 
@@ -27,7 +27,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body { 
-            font-family: 'Inter', sans-serif; 
+            font-family: 'Inter', sans-serif; /* Default to Body Font */
             background: var(--bg); 
             color: var(--main); 
             line-height: 1.6; 
@@ -36,7 +36,7 @@
             overflow-x: hidden;
         }
 
-        /* TEXTURE: Subtle Paper Grain */
+        /* TEXTURE */
         body::before {
             content: "";
             position: fixed;
@@ -47,14 +47,21 @@
             z-index: -1;
         }
 
-        /* TYPOGRAPHY: The "Founders" Style */
+        /* TYPOGRAPHY: STRICT 2-FONT SYSTEM */
+        
+        /* 1. HEADINGS (Newsreader) */
         h1, h2, h3 { 
             font-family: 'Newsreader', serif; 
-            font-weight: 500; /* Medium weight for authority, not too thick */
+            font-weight: 500; 
             color: var(--main);
-            letter-spacing: -0.01em; /* Slight tightening for editorial look */
-            font-feature-settings: "liga" 0; /* DISABLES LIGATURES (Fixes the f/i collision) */
+            letter-spacing: -0.01em; 
+            font-feature-settings: "liga" 0; 
             line-height: 1.15;
+        }
+
+        /* 2. BODY & UI (Inter) - Explicitly set for consistency */
+        p, a, span, nav, div, footer {
+            font-family: 'Inter', sans-serif;
         }
 
         /* NAV */
@@ -73,7 +80,6 @@
         }
 
         .logo { 
-            font-family: 'Inter', sans-serif;
             font-size: 0.75rem; 
             font-weight: 700; 
             text-transform: uppercase; 
@@ -84,7 +90,6 @@
         .status-pill {
             display: flex;
             align-items: center;
-            font-family: 'Inter', sans-serif;
             font-size: 0.55rem;
             font-weight: 700; 
             text-transform: uppercase;
@@ -123,13 +128,14 @@
         }
 
         .hero h1 { 
-            font-size: clamp(3rem, 5.5vw, 4.8rem); /* Large, confident sizing */
+            /* FIX: Increased max-width to 1400px to force 2 lines instead of 3 */
+            font-size: clamp(3rem, 5.5vw, 4.8rem); 
             margin-bottom: 2rem; 
-            max-width: 1100px;
+            max-width: 1400px; 
+            width: 100%;
         }
 
         .hero p { 
-            font-family: 'Inter', sans-serif;
             font-size: 1.2rem; 
             color: var(--sec); 
             max-width: 700px; 
@@ -143,7 +149,7 @@
         .scroll-indicator {
             position: absolute;
             bottom: 3rem;
-            left: 8%; /* Aligned left for "Institutional" feel, not center */
+            left: 8%;
             display: flex;
             align-items: center;
             opacity: 0.5;
@@ -181,13 +187,14 @@
             font-weight: 600; 
             letter-spacing: 2px; 
             color: var(--sec); 
-            margin-bottom: 1rem; display: block;
+            margin-bottom: 1rem; 
+            display: block;
         }
 
         .logic-card h3 { 
-            font-size: 1.8rem; /* Big, readable serif headings */
+            font-size: 1.8rem; 
             margin-bottom: 1rem; 
-            font-weight: 400; /* Elegant weight */
+            font-weight: 400; 
         }
 
         .logic-card p { 
@@ -205,6 +212,18 @@
         }
 
         .manifesto-content { max-width: 900px; margin-bottom: 6rem; }
+        
+        /* FIX: Added margin-bottom to the span to separate it from the H2 */
+        .manifesto-content span {
+            font-size: 0.6rem; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px; 
+            color: var(--sec);
+            display: block;
+            margin-bottom: 1.5rem; /* Increased breathing room */
+        }
+
         .manifesto-content h2 { 
             font-size: 2.8rem; 
             margin-bottom: 1.5rem; 
@@ -215,12 +234,15 @@
         /* FOOTER */
         .contact-section { padding-top: 6rem; padding-bottom: 6rem; }
         
+        /* FIX: Switched to Inter (Sans-Serif) to match body font strictly */
         .linkedin-link { 
             display: inline-flex; align-items: center; 
             text-decoration: none; color: var(--main); 
-            font-weight: 500; font-size: 1rem; 
-            font-family: 'Newsreader', serif; font-style: italic; /* Distinctive style */
+            font-weight: 600; 
+            font-size: 1rem;
+            transition: opacity 0.2s;
         }
+        .linkedin-link:hover { opacity: 0.7; }
         .linkedin-link svg { width: 18px; height: 18px; margin-right: 12px; fill: var(--main); }
 
         footer { 
@@ -270,7 +292,7 @@
 
     <div class="execution-zone reveal">
         <div class="manifesto-content">
-            <span style="font-family: 'Inter'; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--sec);">Strategic Intent</span>
+            <span>Strategic Intent</span>
             <h2>Conviction over Consistency.</h2>
             <p>Silvius Capital explicitly rejects the management of quarterly optics and the artificial smoothing of returns. We concentrate capital where macro regimes, fundamentals, and timing align to create high-stakes upside.</p>
         </div>
@@ -310,7 +332,7 @@
         
         <a href="https://www.linkedin.com/company/silvius-capital/?viewAsMember=true" target="_blank" class="linkedin-link">
             <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-            Follow on LinkedIn
+            Follow us on LinkedIn
         </a>
     </section>
 
