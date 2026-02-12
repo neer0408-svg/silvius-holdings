@@ -139,7 +139,7 @@
             font-size: 1.2rem; 
             color: var(--sec); 
             max-width: 700px; 
-            margin-bottom: 4rem;
+            margin-bottom: 2rem; /* Reduced from 4rem */
             line-height: 1.7;
             border-left: 2px solid var(--main);
             padding-left: 1.5rem;
@@ -148,7 +148,7 @@
         /* SCROLL HINT */
         .scroll-indicator {
             position: absolute;
-            bottom: 3rem;
+            bottom: 6rem; /* Increased from 3rem to move it up */
             left: 8%;
             display: flex;
             align-items: center;
@@ -212,6 +212,7 @@
             position: relative;
         }
 
+        /* The Section Symbol Divider */
         .divider-icon {
             position: absolute;
             top: -12px;
@@ -272,17 +273,18 @@
         .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
         .reveal.visible { opacity: 1; transform: translateY(0); }
 
-        /* MOBILE & PRINT */
+        /* MOBILE & PRINT STYLES */
         @media (max-width: 768px) {
             nav { padding: 1rem 6%; }
             section, .execution-zone, footer { padding: 4rem 6%; }
             .hero h1 { font-size: 2.5rem; }
             .manifesto-content h2 { font-size: 2rem; }
-            .scroll-indicator { left: 6%; }
+            .scroll-indicator { left: 6%; bottom: 4rem; } /* Adjusted for mobile */
             footer { justify-content: flex-start; }
             .divider-icon { background: linear-gradient(180deg, var(--zone) 50%, #EAEAEA 50%); } 
         }
 
+        /* PRINT OPTIMIZATION (God Mode) */
         @media print {
             nav, .scroll-indicator, .contact-section, footer, .linkedin-link { display: none; }
             body { background: white; color: black; }
