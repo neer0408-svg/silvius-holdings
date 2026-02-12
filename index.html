@@ -41,7 +41,7 @@
             overflow-x: hidden;
         }
 
-        /* TEXTURE */
+        /* TEXTURE OVERLAY */
         body::before {
             content: "";
             position: fixed;
@@ -64,7 +64,7 @@
 
         p, a, span, nav, div, footer { font-family: 'Inter', sans-serif; }
 
-        /* NAV */
+        /* NAVIGATION */
         nav { 
             padding: 1.2rem 8%; 
             display: flex; 
@@ -115,10 +115,9 @@
         }
         @keyframes pulse { 0% { transform: scale(1); opacity: 0.5; } 100% { transform: scale(2.5); opacity: 0; } }
 
-        /* SECTIONS */
+        /* HERO SECTION */
         section { padding: 6rem 12% 5rem; position: relative; }
 
-        /* HERO */
         .hero { 
             display: block; 
             padding-top: 10rem;
@@ -142,10 +141,9 @@
             padding-left: 1.5rem;
         }
 
-        /* SCROLL HINT */
         .scroll-indicator {
             position: relative; 
-            margin-top: 1.5rem; 
+            margin-top: 2.5rem; 
             left: 0;
             display: flex;
             align-items: center;
@@ -156,6 +154,7 @@
             font-weight: 600;
             padding-left: 1.6rem; 
         }
+
         .scroll-line {
             width: 40px;
             height: 1px;
@@ -163,7 +162,7 @@
             margin-right: 15px;
         }
 
-        /* GRID */
+        /* GRID SYSTEM */
         .logic-grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
@@ -174,7 +173,7 @@
         .logic-card { 
             border-top: 1px solid var(--border); 
             padding-top: 1.5rem; 
-            transition: transform 0.3s ease;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
         
         .logic-card:hover { transform: translateY(-4px); border-color: var(--main); }
@@ -201,7 +200,7 @@
             line-height: 1.7;
         }
 
-        /* EXECUTION ZONE */
+        /* EXECUTION ZONE (MANIFESTO) */
         .execution-zone { 
             background: linear-gradient(180deg, var(--zone) 0%, #EAEAEA 100%); 
             padding: 8rem 12%; 
@@ -215,12 +214,13 @@
             top: -12px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--zone); 
+            background: var(--bg); 
             padding: 0 15px;
             color: #999;
             font-family: 'Newsreader', serif;
             font-style: italic;
             font-size: 1.2rem;
+            z-index: 2;
         }
 
         .manifesto-content { max-width: 900px; margin-bottom: 6rem; }
@@ -240,9 +240,10 @@
             margin-bottom: 1.5rem; 
             line-height: 1.2;
         }
+
         .manifesto-content p { font-size: 1.25rem; color: var(--sec); font-weight: 400; line-height: 1.8; }
 
-        /* FOOTER */
+        /* CONTACT & SOCIAL */
         .contact-section { padding-top: 6rem; padding-bottom: 6rem; }
         
         .link-container { margin-top: 3rem; }
@@ -254,6 +255,7 @@
             font-size: 1rem;
             transition: opacity 0.2s;
         }
+
         .linkedin-link:hover { opacity: 0.7; }
         .linkedin-link svg { width: 18px; height: 18px; margin-right: 12px; fill: var(--main); }
 
@@ -268,20 +270,21 @@
             align-items: center;
         }
 
-        /* ANIMATION */
-        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
+        /* SCROLL REVEAL ANIMATION */
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.visible { opacity: 1; transform: translateY(0); }
 
-        /* MOBILE & PRINT */
+        /* RESPONSIVE DESIGN */
         @media (max-width: 768px) {
             nav { padding: 1rem 6%; }
             section, .execution-zone, footer { padding: 4rem 6%; }
             .hero { padding-top: 8rem; }
             .hero h1 { font-size: 2.5rem; }
+            .hero p { padding-left: 1rem; font-size: 1.1rem; }
             .manifesto-content h2 { font-size: 2rem; }
             .scroll-indicator { padding-left: 0; }
             footer { justify-content: flex-start; }
-            .divider-icon { background: linear-gradient(180deg, var(--zone) 50%, #EAEAEA 50%); } 
+            .divider-icon { background: var(--zone); } 
         }
 
         @media print {
@@ -363,7 +366,7 @@
         </div>
         
         <div class="link-container">
-            <a href="https://www.linkedin.com/company/silvius-capital/?viewAsMember=true" target="_blank" class="linkedin-link">
+            <a href="https://www.linkedin.com/company/silvius-capital/" target="_blank" class="linkedin-link" aria-label="Silvius Capital LinkedIn Profile">
                 <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                 Follow us on LinkedIn
             </a>
@@ -371,10 +374,15 @@
     </section>
 
     <footer>
-        <div>&copy; 2026 Silvius Holdings.</div>
+        <div>&copy; <span id="year"></span> Silvius Holdings.</div>
     </footer>
 
     <script>
+        // Automatic Year Update
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // High-performance Reveal Logic
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { 
                 if (entry.isIntersecting) {
@@ -382,7 +390,7 @@
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1 });
+        }, observerOptions);
         
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
