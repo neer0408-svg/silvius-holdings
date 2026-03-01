@@ -19,18 +19,19 @@
 
     <style>
         :root {
-            --bg:       #F5F4F0;
-            --bg-tint:  #EDEBE5;
-            --bg-shade: #E5E2DA;
-            --main:     #0E0E0C;
-            --body:     #2A2925;  /* all body text — near-black, always readable */
-            --sub:      #4A4844;  /* secondary labels, captions */
-            --muted:    #6B6860;  /* eyebrows, indices only */
-            --active:   #2E7D32;
-            --italic:   #7A6552;  /* warm tobacco — for all italic emphasis */
-            --border:   rgba(14,14,12,0.1);
-            --border-m: rgba(14,14,12,0.16);
-            --max-w:    1280px;
+            --bg:        #F5F4F0;
+            --bg-tint:   #EDEBE5;
+            --bg-shade:  #E5E2DA;
+            --bg-cream:  #F0EBDF;
+            --main:      #0E0E0C;
+            --body:      #2A2925;
+            --sub:       #4A4844;
+            --muted:     #6B6860;
+            --active:    #2E7D32;
+            --italic:    #7A6552;
+            --border:    rgba(14,14,12,0.1);
+            --border-m:  rgba(14,14,12,0.16);
+            --max-w:     1280px;
         }
 
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -69,7 +70,7 @@
             display: block;
         }
 
-        /* ── Nav ──────────────────────────────────────────────────── */
+        /* -- Nav -------------------------------------------------- */
         nav {
             position: fixed;
             top: 0; left: 0; right: 0;
@@ -133,21 +134,21 @@
             100% { transform: scale(2.8); opacity: 0; }
         }
 
-        /* ── Hero ─────────────────────────────────────────────────── */
+        /* -- Hero ------------------------------------------------- */
         .hero {
-            padding-top: 11rem;
-            padding-bottom: 6rem;
+            padding-top: 12rem;
+            padding-bottom: 8rem;
         }
 
         .hero h1 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(3.2rem, 5.2vw, 5.2rem);
-            font-weight: 400;
-            letter-spacing: -0.03em;
-            line-height: 1.07;
+            font-size: clamp(3.2rem, 5.4vw, 5.6rem);
+            font-weight: 300;
+            letter-spacing: -0.035em;
+            line-height: 1.05;
             color: var(--main);
-            max-width: 900px;
-            margin-bottom: 2.5rem;
+            max-width: 920px;
+            margin-bottom: 2.8rem;
         }
 
         .hero h1 em {
@@ -170,42 +171,79 @@
 
         .scroll-cue {
             display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-top: 3.5rem;
-            opacity: 0.45;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            margin-top: 4rem;
+            opacity: 0.35;
         }
 
         .scroll-cue span {
-            font-size: 0.55rem;
+            font-size: 0.54rem;
             text-transform: uppercase;
             letter-spacing: 0.2em;
             font-weight: 500;
             color: var(--main);
-            flex-shrink: 0;
         }
 
         .scroll-line {
-            width: 38px;
-            height: 1px;
+            width: 1px;
+            height: 28px;
             background: var(--main);
-            transform-origin: left;
-            animation: lengthen 2.4s ease-in-out infinite;
+            transform-origin: top;
+            animation: drawdown 2.4s ease-in-out infinite;
         }
 
-        @keyframes lengthen {
-            0%, 100% { transform: scaleX(1); }
-            50%       { transform: scaleX(1.7); }
+        @keyframes drawdown {
+            0%, 100% { transform: scaleY(1); opacity: 0.4; }
+            50%       { transform: scaleY(1.8); opacity: 0.9; }
         }
 
-        hr.rule { border: none; border-top: 1px solid var(--border); }
-
-        /* ── Mandate ──────────────────────────────────────────────── */
-        .mandate {
-            background: var(--bg-tint);
+        /* -- Belief ----------------------------------------------- */
+        .belief {
+            background: var(--bg);
+            padding: 6.5rem 7%;
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
-            padding: 6rem 7%;
+        }
+
+        .belief-inner {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .belief .eyebrow {
+            margin-bottom: 2.2rem;
+        }
+
+        .belief blockquote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.65rem, 2.6vw, 2.5rem);
+            font-weight: 300;
+            font-style: italic;
+            color: var(--italic);
+            line-height: 1.4;
+            max-width: 780px;
+            letter-spacing: -0.01em;
+        }
+
+        .belief-dash {
+            width: 32px;
+            height: 1px;
+            background: var(--italic);
+            opacity: 0.25;
+            margin-top: 2.2rem;
+        }
+
+        /* -- Mandate ---------------------------------------------- */
+        .mandate {
+            background: var(--bg-tint);
+            border-bottom: 1px solid var(--border);
+            padding: 8rem 7%;
         }
 
         .mandate-header {
@@ -213,7 +251,7 @@
             grid-template-columns: 5fr 4fr;
             gap: 5rem;
             align-items: start;
-            margin-bottom: 4.5rem;
+            margin-bottom: 5rem;
         }
 
         .mandate-header .eyebrow { margin-bottom: 1.4rem; }
@@ -258,7 +296,7 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 2.2rem;
             font-weight: 300;
-            color: rgba(14,14,12,0.42);
+            color: rgba(14,14,12,0.15);
             line-height: 1;
             display: block;
             margin-bottom: 1.2rem;
@@ -284,10 +322,36 @@
             font-weight: 400;
         }
 
-        /* ── Protocol ─────────────────────────────────────────────── */
+        .engine-stat {
+            display: inline-block;
+            margin-top: 1.4rem;
+            padding-top: 1.1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .engine-stat-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.65rem;
+            font-weight: 300;
+            color: var(--main);
+            letter-spacing: -0.02em;
+            line-height: 1;
+        }
+
+        .engine-stat-label {
+            font-size: 0.5rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--muted);
+            margin-top: 0.35rem;
+            display: block;
+        }
+
+        /* -- Protocol --------------------------------------------- */
         .protocol {
             background: var(--bg);
-            padding: 6rem 7%;
+            padding: 8rem 7%;
         }
 
         .protocol-top {
@@ -360,12 +424,50 @@
             background: var(--main);
             opacity: 0.12;
             margin-top: 1.6rem;
-            transition: width 0.45s ease, opacity 0.45s ease;
+            transition: width 0.45s cubic-bezier(0.16,1,0.3,1), opacity 0.45s ease;
         }
 
         .pillar:hover .pillar-rule { width: 44px; opacity: 0.22; }
 
-        /* ── Footer ───────────────────────────────────────────────── */
+        /* -- Closing ---------------------------------------------- */
+        .closing {
+            padding: 5.5rem 7%;
+            border-top: 1px solid var(--border);
+        }
+
+        .closing-inner {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        .closing-left .eyebrow { margin-bottom: 1.2rem; }
+
+        .closing-left h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8rem, 2.6vw, 2.6rem);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.12;
+            color: var(--main);
+        }
+
+        .closing-left h2 em {
+            font-style: italic;
+            color: var(--italic);
+        }
+
+        .closing-right p {
+            font-size: 0.95rem;
+            color: var(--body);
+            line-height: 1.82;
+            font-weight: 400;
+        }
+
+        /* -- Footer ----------------------------------------------- */
         footer {
             background: var(--bg-shade);
             border-top: 1px solid var(--border);
@@ -419,7 +521,7 @@
             line-height: 1.7;
         }
 
-        /* ── Reveal ───────────────────────────────────────────────── */
+        /* -- Reveal ----------------------------------------------- */
         .reveal {
             opacity: 0;
             transform: translateY(16px);
@@ -435,7 +537,7 @@
         .d2 { transition-delay: 0.2s; }
         .d3 { transition-delay: 0.3s; }
 
-        /* ── Responsive ───────────────────────────────────────────── */
+        /* -- Responsive ------------------------------------------- */
         @media (max-width: 900px) {
             .mandate-header   { grid-template-columns: 1fr; gap: 1.8rem; }
             .mandate-header p { padding-top: 0; }
@@ -444,20 +546,24 @@
             .engine-cell:not(:first-child) { padding-left: 0; }
             .protocol-top     { grid-template-columns: 1fr; gap: 1.8rem; }
             .pillars          { grid-template-columns: 1fr; gap: 2.5rem; }
+            .closing-inner    { grid-template-columns: 1fr; gap: 2rem; }
             footer            { flex-direction: column; align-items: flex-start; }
             .footer-right     { text-align: left; }
         }
 
         @media (max-width: 560px) {
             nav { padding: 1rem 5%; }
-            .hero, .mandate, .protocol, footer { padding-left: 5%; padding-right: 5%; }
-            .hero { padding-top: 9rem; padding-bottom: 4.5rem; }
+            .hero, .mandate, .protocol, .belief, .closing, footer { padding-left: 5%; padding-right: 5%; }
+            .hero { padding-top: 9rem; padding-bottom: 5rem; }
+            .mandate, .protocol { padding-top: 5.5rem; padding-bottom: 5.5rem; }
+            .belief { padding-top: 4.5rem; padding-bottom: 4.5rem; }
         }
 
         @media print {
             nav, .scroll-cue { display: none; }
             body::before { display: none; }
             .mandate { background: #efefef; }
+            .belief { background: #f5f0e4; }
         }
     </style>
 </head>
@@ -471,6 +577,7 @@
         </div>
     </nav>
 
+    <!-- Hero -->
     <section class="hero wrap">
         <h1 class="reveal">
             The future is defined<br>
@@ -488,6 +595,18 @@
         </div>
     </section>
 
+    <!-- Belief -->
+    <section class="belief">
+        <div class="belief-inner">
+            <span class="eyebrow reveal">Conviction</span>
+            <blockquote class="reveal d1">
+                We do not attempt to smooth returns. We do not manage to quarterly optics. A portfolio designed to avoid drawdowns is structurally incapable of producing exceptional results.
+            </blockquote>
+            <div class="belief-dash reveal d2"></div>
+        </div>
+    </section>
+
+    <!-- Mandate -->
     <div class="mandate">
         <div class="wrap">
             <div class="mandate-header">
@@ -504,23 +623,36 @@
                     <span class="eyebrow">Objective</span>
                     <h3>The Power Law</h3>
                     <p>We prioritize the rare, non-linear outcomes that define industries. We accept volatility as the necessary cost of capturing outliers.</p>
+                    <div class="engine-stat">
+                        <div class="engine-stat-num">&le; 10</div>
+                        <span class="engine-stat-label">Concentrated Positions</span>
+                    </div>
                 </div>
                 <div class="engine-cell reveal d2">
                     <span class="engine-num">02</span>
                     <span class="eyebrow">Framework</span>
                     <h3>Three Engines</h3>
                     <p>Execution across three layers: catching structural trends, positioning for upside, and maintaining strategic cash optionality.</p>
+                    <div class="engine-stat">
+                        <div class="engine-stat-num">23 / 25</div>
+                        <span class="engine-stat-label">Minimum Filter Score</span>
+                    </div>
                 </div>
                 <div class="engine-cell reveal d3">
                     <span class="engine-num">03</span>
                     <span class="eyebrow">Constraint</span>
                     <h3>Capital Velocity</h3>
                     <p>Patience is return-based, not time-based. If an allocation fails its 35% CAGR hurdle, capital is immediately redeployed.</p>
+                    <div class="engine-stat">
+                        <div class="engine-stat-num">35%</div>
+                        <span class="engine-stat-label">CAGR Hurdle Rate</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Protocol -->
     <div class="protocol">
         <div class="wrap">
             <div class="protocol-top reveal">
@@ -551,6 +683,20 @@
         </div>
     </div>
 
+    <!-- Closing -->
+    <section class="closing">
+        <div class="closing-inner">
+            <div class="closing-left">
+                <span class="eyebrow reveal">Mandate</span>
+                <h2 class="reveal d1">Dominance<br><em>over time.</em></h2>
+            </div>
+            <div class="closing-right">
+                <p class="reveal d2">Capital is allocated where innovation meets discipline, where mispricing meets inevitability, and where structural shifts overwhelm outdated assumptions. When these forces align, concentration is not a risk. It is a requirement.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
         <div class="footer-left">
             <p>
@@ -573,12 +719,12 @@
         document.getElementById('year').textContent = new Date().getFullYear();
 
         const nav = document.getElementById('nav');
-        window.addEventListener('scroll', () => {
+        window.addEventListener('scroll', function() {
             nav.classList.toggle('scrolled', window.scrollY > 60);
         }, { passive: true });
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(e => {
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
                 if (e.isIntersecting) {
                     e.target.classList.add('visible');
                     observer.unobserve(e.target);
@@ -586,9 +732,30 @@
             });
         }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
 
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+
+        var heroH1 = document.querySelector('.hero h1');
+        var heroSub = document.querySelector('.hero-sub');
+        var ticking = false;
+
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                requestAnimationFrame(function() {
+                    var y = window.scrollY;
+                    if (y < 700) {
+                        var fade = Math.max(0, 1 - y / 550);
+                        var shift = y * 0.06;
+                        heroH1.style.transform = 'translateY(' + shift + 'px)';
+                        heroH1.style.opacity = fade;
+                        heroSub.style.transform = 'translateY(' + (shift * 0.4) + 'px)';
+                        heroSub.style.opacity = fade;
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
     </script>
 
 </body>
 </html>
-
