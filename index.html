@@ -22,7 +22,6 @@
             --bg:        #F5F4F0;
             --bg-tint:   #EDEBE5;
             --bg-shade:  #E5E2DA;
-            --bg-cream:  #F0EBDF;
             --main:      #0E0E0C;
             --body:      #2A2925;
             --sub:       #4A4844;
@@ -199,6 +198,72 @@
             50%       { transform: scaleY(1.8); opacity: 0.9; }
         }
 
+        /* -- Inflection Curve ------------------------------------- */
+        .hero {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .inflection-curve {
+            position: absolute;
+            right: -2%;
+            top: 50%;
+            transform: translateY(-48%);
+            width: 42%;
+            max-width: 560px;
+            height: auto;
+            z-index: 0;
+            opacity: 0;
+            animation: curveIn 1.8s cubic-bezier(0.16,1,0.3,1) 0.6s forwards;
+        }
+
+        @keyframes curveIn {
+            from { opacity: 0; transform: translateY(-48%) translateX(16px); }
+            to   { opacity: 1; transform: translateY(-48%) translateX(0); }
+        }
+
+        .curve-stroke {
+            fill: none;
+            stroke: var(--italic);
+            stroke-width: 1.1;
+            opacity: 0.16;
+            stroke-linecap: round;
+            stroke-dasharray: 800;
+            stroke-dashoffset: 800;
+            animation: drawStroke 2.8s cubic-bezier(0.25,0.1,0.25,1) 0.8s forwards;
+        }
+
+        .curve-glow {
+            fill: none;
+            stroke: var(--italic);
+            stroke-width: 3.5;
+            opacity: 0.05;
+            stroke-linecap: round;
+            stroke-dasharray: 800;
+            stroke-dashoffset: 800;
+            animation: drawStroke 2.8s cubic-bezier(0.25,0.1,0.25,1) 0.8s forwards;
+        }
+
+        @keyframes drawStroke {
+            to { stroke-dashoffset: 0; }
+        }
+
+        .inflection-dot {
+            fill: var(--italic);
+            opacity: 0;
+            animation: dotReveal 0.5s ease 2.6s forwards;
+        }
+
+        @keyframes dotReveal {
+            from { opacity: 0; }
+            to   { opacity: 0.3; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
         /* -- Belief ----------------------------------------------- */
         .belief {
             background: var(--bg);
@@ -296,7 +361,7 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 2.2rem;
             font-weight: 300;
-            color: rgba(14,14,12,0.15);
+            color: rgba(14,14,12,0.38);
             line-height: 1;
             display: block;
             margin-bottom: 1.2rem;
@@ -320,32 +385,6 @@
             color: var(--body);
             line-height: 1.72;
             font-weight: 400;
-        }
-
-        .engine-stat {
-            display: inline-block;
-            margin-top: 1.4rem;
-            padding-top: 1.1rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .engine-stat-num {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.65rem;
-            font-weight: 300;
-            color: var(--main);
-            letter-spacing: -0.02em;
-            line-height: 1;
-        }
-
-        .engine-stat-label {
-            font-size: 0.5rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.18em;
-            color: var(--muted);
-            margin-top: 0.35rem;
-            display: block;
         }
 
         /* -- Protocol --------------------------------------------- */
@@ -539,6 +578,7 @@
 
         /* -- Responsive ------------------------------------------- */
         @media (max-width: 900px) {
+            .inflection-curve { display: none; }
             .mandate-header   { grid-template-columns: 1fr; gap: 1.8rem; }
             .mandate-header p { padding-top: 0; }
             .engine-row       { grid-template-columns: 1fr; border-top: none; }
@@ -563,7 +603,6 @@
             nav, .scroll-cue { display: none; }
             body::before { display: none; }
             .mandate { background: #efefef; }
-            .belief { background: #f5f0e4; }
         }
     </style>
 </head>
@@ -579,20 +618,28 @@
 
     <!-- Hero -->
     <section class="hero wrap">
-        <h1 class="reveal">
-            The future is defined<br>
-            by <em>outliers.</em><br>
-            We position for<br>the inflection.
-        </h1>
+        <div class="hero-content">
+            <h1 class="reveal">
+                The future is defined<br>
+                by <em>outliers.</em><br>
+                We position for<br>the inflection.
+            </h1>
 
-        <div class="hero-sub reveal d1">
-            <p>Silvius Capital identifies the fundamental shifts that consensus ignores. We focus on where the world is going, not where it has been.</p>
+            <div class="hero-sub reveal d1">
+                <p>Silvius Capital identifies the fundamental shifts that consensus ignores. We focus on where the world is going, not where it has been.</p>
+            </div>
+
+            <div class="scroll-cue reveal d2">
+                <span>Scroll</span>
+                <div class="scroll-line"></div>
+            </div>
         </div>
 
-        <div class="scroll-cue reveal d2">
-            <span>Scroll</span>
-            <div class="scroll-line"></div>
-        </div>
+        <svg class="inflection-curve" viewBox="0 0 500 400" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+            <path class="curve-glow" d="M 0,330 C 60,328 140,324 200,318 C 260,312 300,302 340,272 C 365,252 380,218 395,168 C 410,118 425,58 455,15" />
+            <path class="curve-stroke" d="M 0,330 C 60,328 140,324 200,318 C 260,312 300,302 340,272 C 365,252 380,218 395,168 C 410,118 425,58 455,15" />
+            <circle class="inflection-dot" cx="340" cy="272" r="2.5" />
+        </svg>
     </section>
 
     <!-- Belief -->
@@ -623,30 +670,18 @@
                     <span class="eyebrow">Objective</span>
                     <h3>The Power Law</h3>
                     <p>We prioritize the rare, non-linear outcomes that define industries. We accept volatility as the necessary cost of capturing outliers.</p>
-                    <div class="engine-stat">
-                        <div class="engine-stat-num">&le; 10</div>
-                        <span class="engine-stat-label">Concentrated Positions</span>
-                    </div>
                 </div>
                 <div class="engine-cell reveal d2">
                     <span class="engine-num">02</span>
                     <span class="eyebrow">Framework</span>
                     <h3>Three Engines</h3>
                     <p>Execution across three layers: catching structural trends, positioning for upside, and maintaining strategic cash optionality.</p>
-                    <div class="engine-stat">
-                        <div class="engine-stat-num">23 / 25</div>
-                        <span class="engine-stat-label">Minimum Filter Score</span>
-                    </div>
                 </div>
                 <div class="engine-cell reveal d3">
                     <span class="engine-num">03</span>
                     <span class="eyebrow">Constraint</span>
                     <h3>Capital Velocity</h3>
                     <p>Patience is return-based, not time-based. If an allocation fails its 35% CAGR hurdle, capital is immediately redeployed.</p>
-                    <div class="engine-stat">
-                        <div class="engine-stat-num">35%</div>
-                        <span class="engine-stat-label">CAGR Hurdle Rate</span>
-                    </div>
                 </div>
             </div>
         </div>
@@ -734,8 +769,8 @@
 
         document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
 
-        var heroH1 = document.querySelector('.hero h1');
-        var heroSub = document.querySelector('.hero-sub');
+        var heroH1 = document.querySelector('.hero-content h1');
+        var heroSub = document.querySelector('.hero-content .hero-sub');
         var ticking = false;
 
         window.addEventListener('scroll', function() {
