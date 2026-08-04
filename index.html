@@ -6,12 +6,12 @@
 
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2264%22 font-family=%22Georgia,serif%22 fill=%22%230E0E0C%22>SC</text></svg>">
 
-    <meta property="og:title" content="Silvius Capital | Proprietary Mandate">
-    <meta property="og:description" content="Identifying fundamental shifts that consensus ignores.">
+    <meta property="og:title" content="Silvius Capital | Investment Approach">
+    <meta property="og:description" content="A concentrated investment approach focused on underappreciated long-term change.">
     <meta property="og:type" content="website">
     <meta name="theme-color" content="#F5F4F0">
 
-    <title>Silvius Capital | Investment Mandate</title>
+    <title>Silvius Capital | Investment Approach</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -405,10 +405,10 @@
 
         .protocol-top h2 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2rem, 3.2vw, 3.2rem);
+            font-size: clamp(2.6rem, 4vw, 4rem);
             font-weight: 400;
             letter-spacing: -0.025em;
-            line-height: 1.1;
+            line-height: 1.08;
             color: var(--main);
         }
 
@@ -487,10 +487,10 @@
 
         .closing-left h2 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(1.8rem, 2.6vw, 2.6rem);
+            font-size: clamp(2.6rem, 4vw, 4rem);
             font-weight: 400;
-            letter-spacing: -0.02em;
-            line-height: 1.12;
+            letter-spacing: -0.025em;
+            line-height: 1.08;
             color: var(--main);
         }
 
@@ -561,17 +561,25 @@
         }
 
         /* -- Reveal ----------------------------------------------- */
+        /* Content remains visible in file previews and browsers without JavaScript. */
         .reveal {
-            opacity: 0;
-            transform: translateY(16px);
-            filter: blur(3px);
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
             transition:
                 opacity   0.85s cubic-bezier(0.16,1,0.3,1),
                 transform 0.85s cubic-bezier(0.16,1,0.3,1),
                 filter    0.85s cubic-bezier(0.16,1,0.3,1);
         }
 
-        .reveal.visible { opacity: 1; transform: translateY(0); filter: blur(0); }
+        /* Reveal animation activates only when the browser supports it. */
+        .reveal-anim .reveal {
+            opacity: 0;
+            transform: translateY(16px);
+            filter: blur(3px);
+        }
+
+        .reveal-anim .reveal.visible { opacity: 1; transform: translateY(0); filter: blur(0); }
         .d1 { transition-delay: 0.1s; }
         .d2 { transition-delay: 0.2s; }
         .d3 { transition-delay: 0.3s; }
@@ -612,7 +620,7 @@
         <div class="logo">Silvius Capital</div>
         <div class="status-pill">
             <div class="status-dot"></div>
-            Proprietary Mandate
+            Investment Approach
         </div>
     </nav>
 
@@ -620,13 +628,13 @@
     <section class="hero wrap">
         <div class="hero-content">
             <h1 class="reveal">
-                The future is defined<br>
-                by <em>outliers.</em><br>
-                We position for<br>the inflection.
+                The future belongs<br>
+                to <em>outliers.</em><br>
+                We invest before<br>consensus catches up.
             </h1>
 
             <div class="hero-sub reveal d1">
-                <p>Silvius Capital identifies the fundamental shifts that consensus ignores. We focus on where the world is going, not where it has been.</p>
+                <p>Silvius Capital invests in a concentrated portfolio of businesses positioned to benefit from durable technological and economic shifts that remain underappreciated by the market.</p>
             </div>
 
             <div class="scroll-cue reveal d2">
@@ -647,7 +655,7 @@
         <div class="belief-inner">
             <span class="eyebrow reveal">Conviction</span>
             <blockquote class="reveal d1">
-                We do not attempt to smooth returns. We do not manage to quarterly optics. A portfolio designed to avoid drawdowns is structurally incapable of producing exceptional results.
+                We define risk by the probability of permanent capital impairment. Volatility reflects disagreement over a company’s future and says little on its own about the quality of the business. A stock can move sharply while the underlying economics strengthen, so we judge companies by their fundamentals, execution, and valuation rather than the smoothness of the chart. We embrace volatility when the thesis remains intact because meaningful alpha is earned when a differentiated view proves correct before it becomes consensus.
             </blockquote>
             <div class="belief-dash reveal d2"></div>
         </div>
@@ -658,30 +666,30 @@
         <div class="wrap">
             <div class="mandate-header">
                 <div>
-                    <span class="eyebrow reveal">Strategic Intent</span>
-                    <h2 class="reveal d1">Asymmetric<br><em>Concentration.</em></h2>
+                    <span class="eyebrow reveal">Investment Philosophy</span>
+                    <h2 class="reveal d1">Concentrated<br><em>by design.</em></h2>
                 </div>
-                <p class="reveal d2">Silvius Capital explicitly rejects the management of quarterly optics and the artificial smoothing of returns. We concentrate capital where macro regimes, fundamentals, and timing align to create high-stakes upside.</p>
+                <p class="reveal d2">We invest when three conditions are present: a high-quality business, a large and durable opportunity, and a price that offers substantial upside relative to the risk. Because those situations are uncommon, the portfolio is intentionally concentrated.</p>
             </div>
 
             <div class="engine-row">
                 <div class="engine-cell reveal d1">
                     <span class="engine-num">01</span>
                     <span class="eyebrow">Objective</span>
-                    <h3>The Power Law</h3>
-                    <p>We prioritize the rare, non-linear outcomes that define industries. We accept volatility as the necessary cost of capturing outliers.</p>
+                    <h3>The Outlier Principle</h3>
+                    <p>A small number of businesses account for a disproportionate share of long-term value creation. We focus our research on finding them before that potential is fully reflected in the price.</p>
                 </div>
                 <div class="engine-cell reveal d2">
                     <span class="engine-num">02</span>
-                    <span class="eyebrow">Framework</span>
-                    <h3>Three Engines</h3>
-                    <p>Execution across three layers: catching structural trends, positioning for upside, and maintaining strategic cash optionality.</p>
+                    <span class="eyebrow">Discipline</span>
+                    <h3>Research Before Size</h3>
+                    <p>Position size follows the strength of the evidence. We study the business, industry structure, incentives, management, and valuation, then invest meaningfully when the conclusion is differentiated and durable.</p>
                 </div>
                 <div class="engine-cell reveal d3">
                     <span class="engine-num">03</span>
-                    <span class="eyebrow">Constraint</span>
-                    <h3>Capital Velocity</h3>
-                    <p>Patience is return-based, not time-based. If an allocation fails its 35% CAGR hurdle, capital is immediately redeployed.</p>
+                    <span class="eyebrow">Return Hurdle</span>
+                    <h3>A High Return Hurdle</h3>
+                    <p>We generally underwrite positions to a credible path toward approximately 30% annualized returns. As facts and valuation change, we reassess prospective returns and reallocate capital when a stronger opportunity emerges.</p>
                 </div>
             </div>
         </div>
@@ -691,27 +699,27 @@
     <div class="protocol">
         <div class="wrap">
             <div class="protocol-top reveal">
-                <h2>Execution<br><em>Protocol.</em></h2>
-                <p>Three disciplines govern how Silvius Capital moves from thesis to position. Systematic rigor, supply chain depth, and the discipline to hold cash as a strategic weapon.</p>
+                <h2>How We<br><em>Decide.</em></h2>
+                <p>Our process combines a consistent analytical framework with deep work in a small number of themes. The objective is to understand what the market is missing, why it is missing it, and what could cause the gap to close.</p>
             </div>
 
             <div class="pillars">
                 <div class="pillar reveal d1">
                     <span class="pillar-idx">01</span>
-                    <h3>Systemic Filters</h3>
-                    <p>Every move is governed by a 25-point checklist across five vectors: Structural Foundation, Financial Strength, Growth Drivers, Valuation Asymmetry, and Catalyst Recognition.</p>
+                    <h3>Intellectual Honesty</h3>
+                    <p>Every investment is tested against 25 questions covering the business, management, valuation, and the path ahead. We actively seek evidence that could disprove the thesis and change our view when the facts demand it.</p>
                     <div class="pillar-rule"></div>
                 </div>
                 <div class="pillar reveal d2">
                     <span class="pillar-idx">02</span>
-                    <h3>Supply Chain Depth</h3>
-                    <p>We penetrate complex supply chains, currently in Photonics and Robotics, to identify critical infrastructure before it is repriced by the crowd.</p>
+                    <h3>Themes Under Review</h3>
+                    <p>Current areas of research include tokenization, fintech, AI-enabled credit and lending, and robotics. We focus on businesses with durable customer relationships, essential technology, and economics that can improve materially as adoption expands.</p>
                     <div class="pillar-rule"></div>
                 </div>
                 <div class="pillar reveal d3">
                     <span class="pillar-idx">03</span>
-                    <h3>Strategic Patience</h3>
-                    <p>In dislocated markets, cash is a weapon. It allows us to act when others are forced to react. Survival is the foundation of long-term capture.</p>
+                    <h3>Patience and Optionality</h3>
+                    <p>Cash is held when prospective returns are inadequate. It preserves flexibility, limits forced decisions, and allows us to act decisively when market dislocation creates exceptional prices.</p>
                     <div class="pillar-rule"></div>
                 </div>
             </div>
@@ -722,11 +730,11 @@
     <section class="closing">
         <div class="closing-inner">
             <div class="closing-left">
-                <span class="eyebrow reveal">Mandate</span>
-                <h2 class="reveal d1">Dominance<br><em>over time.</em></h2>
+                <span class="eyebrow reveal">Ownership</span>
+                <h2 class="reveal d1">Conviction<br><em>over time.</em></h2>
             </div>
             <div class="closing-right">
-                <p class="reveal d2">Capital is allocated where innovation meets discipline, where mispricing meets inevitability, and where structural shifts overwhelm outdated assumptions. When these forces align, concentration is not a risk. It is a requirement.</p>
+                <p class="reveal d2">The goal is to own exceptional businesses while their value becomes evident. We hold through volatility, reassess as the business develops, and sell when the evidence or prospective return no longer supports ownership.</p>
             </div>
         </div>
     </section>
@@ -746,7 +754,7 @@
             </a>
         </div>
         <div class="footer-right">
-            Proprietary Mandate<br>Not for distribution.
+            Investment Approach<br>Public overview.
         </div>
     </footer>
 
@@ -758,16 +766,20 @@
             nav.classList.toggle('scrolled', window.scrollY > 60);
         }, { passive: true });
 
-        var observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(e) {
-                if (e.isIntersecting) {
-                    e.target.classList.add('visible');
-                    observer.unobserve(e.target);
-                }
-            });
-        }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
+        if ('IntersectionObserver' in window) {
+            document.documentElement.classList.add('reveal-anim');
 
-        document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(e) {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('visible');
+                        observer.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
+
+            document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+        }
 
         var heroH1 = document.querySelector('.hero-content h1');
         var heroSub = document.querySelector('.hero-content .hero-sub');
