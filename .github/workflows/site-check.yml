@@ -1,0 +1,60 @@
+name: Site checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate static site contract
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          required = {
+              "CNAME", "index.html", "styles.css", "site.js",
+              "favicon.svg", "social-card.png", "robots.txt",
+              "sitemap.xml", "404.html", ".nojekyll"
+          }
+          missing = sorted(p for p in required if not Path(p).exists())
+          assert not missing, f"Missing required files: {missing}"
+
+          assert Path("CNAME").read_text().strip() == "silviusholdings.com"
+
+          html = Path("index.html").read_text()
+          css = Path("styles.css").read_text()
+
+          checks = {
+              "canonical URL": 'rel="canonical" href="https://silviusholdings.com/"',
+              "social image": 'https://silviusholdings.com/social-card.png',
+              "private-capital disclosure": "private investment vehicle",
+              "strict CSP": "Content-Security-Policy",
+              "external stylesheet": 'href="/styles.css"',
+              "external script": 'src="/site.js"',
+              "reduced motion": "prefers-reduced-motion",
+          }
+          for label, needle in checks.items():
+              haystack = css if label == "reduced motion" else html
+              assert needle in haystack, f"Missing {label}"
+
+          assert "<style>" not in html, "Inline style block found"
+          assert not re.search(r"<script(?![^>]*\bsrc=)[^>]*>", html), "Inline script found"
+          assert "'unsafe-inline'" not in html, "CSP allows unsafe inline code"
+
+          robots = Path("robots.txt").read_text()
+          assert "Sitemap: https://silviusholdings.com/sitemap.xml" in robots
+
+          sitemap = Path("sitemap.xml").read_text()
+          assert "<loc>https://silviusholdings.com/</loc>" in sitemap
+
+          print("Static site checks passed.")
