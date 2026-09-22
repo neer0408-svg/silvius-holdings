@@ -3,12 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Silvius Capital is a private investment vehicle with a concentrated approach focused on underappreciated long-term technological and economic change.">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
 
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2264%22 font-family=%22Georgia,serif%22 fill=%22%230E0E0C%22>SC</text></svg>">
+    <link rel="canonical" href="https://silviusholdings.com/">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
     <meta property="og:title" content="Silvius Capital | Investment Approach">
     <meta property="og:description" content="A concentrated investment approach focused on underappreciated long-term change.">
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Silvius Capital">
+    <meta property="og:url" content="https://silviusholdings.com/">
+    <meta property="og:image" content="https://silviusholdings.com/social-card.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Silvius Capital investment approach">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Silvius Capital | Investment Approach">
+    <meta name="twitter:description" content="A concentrated investment approach focused on underappreciated long-term change.">
+    <meta name="twitter:image" content="https://silviusholdings.com/social-card.png">
     <meta name="theme-color" content="#F5F4F0">
 
     <title>Silvius Capital | Investment Approach</title>
@@ -58,6 +73,12 @@
             max-width: var(--max-w);
             margin: 0 auto;
             padding: 0 7%;
+        }
+
+        .mandate > .wrap,
+        .protocol > .wrap {
+            padding-left: 0;
+            padding-right: 0;
         }
 
         .eyebrow {
@@ -600,11 +621,29 @@
         }
 
         @media (max-width: 560px) {
-            nav { padding: 1rem 5%; }
+            nav,
+            nav.scrolled { padding: 1rem 5%; }
             .hero, .mandate, .protocol, .belief, .closing, footer { padding-left: 5%; padding-right: 5%; }
             .hero { padding-top: 9rem; padding-bottom: 5rem; }
             .mandate, .protocol { padding-top: 5.5rem; padding-bottom: 5.5rem; }
             .belief { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+            .footer-left { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+            .status-pill { font-size: 0.6rem; letter-spacing: 0.12em; padding: 6px 9px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .reveal-anim .reveal {
+                opacity: 1;
+                transform: none;
+                filter: none;
+            }
         }
 
         @media print {
@@ -616,10 +655,10 @@
 </head>
 <body>
 
-    <nav id="nav">
+    <nav id="nav" aria-label="Site header">
         <div class="logo">Silvius Capital</div>
         <div class="status-pill">
-            <div class="status-dot"></div>
+            <div class="status-dot" aria-hidden="true"></div>
             Investment Approach
         </div>
     </nav>
@@ -637,7 +676,7 @@
                 <p>Silvius Capital invests in a concentrated portfolio of businesses positioned to benefit from durable technological and economic shifts that remain underappreciated by the market.</p>
             </div>
 
-            <div class="scroll-cue reveal d2">
+            <div class="scroll-cue reveal d2" aria-hidden="true">
                 <span>Scroll</span>
                 <div class="scroll-line"></div>
             </div>
@@ -653,7 +692,7 @@
     <!-- Belief -->
     <section class="belief">
         <div class="belief-inner">
-            <span class="eyebrow reveal">Conviction</span>
+            <h2 class="eyebrow reveal">Conviction</h2>
             <blockquote class="reveal d1">
                 We define risk by the probability of permanent capital impairment. Volatility reflects disagreement over a company’s future and says little on its own about the quality of the business. A stock can move sharply while the underlying economics strengthen, so we judge companies by their fundamentals, execution, and valuation rather than the smoothness of the chart. We embrace volatility when the thesis remains intact because meaningful alpha is earned when a differentiated view proves correct before it becomes consensus.
             </blockquote>
@@ -744,7 +783,8 @@
         <div class="footer-left">
             <p>
                 &copy; <span id="year"></span> Silvius Holdings. All rights reserved.<br>
-                For informational purposes only. Not an offer to invest.
+                Silvius Capital is a private investment vehicle and does not solicit or accept outside capital.<br>
+                For informational purposes only. Not investment advice or an offer to buy or sell any security.
             </p>
             <a href="https://www.linkedin.com/company/silvius-capital/" target="_blank" rel="noopener noreferrer" class="footer-linkedin" aria-label="Silvius Capital on LinkedIn">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -766,7 +806,9 @@
             nav.classList.toggle('scrolled', window.scrollY > 60);
         }, { passive: true });
 
-        if ('IntersectionObserver' in window) {
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if ('IntersectionObserver' in window && !reduceMotion) {
             document.documentElement.classList.add('reveal-anim');
 
             var observer = new IntersectionObserver(function(entries) {
@@ -785,23 +827,25 @@
         var heroSub = document.querySelector('.hero-content .hero-sub');
         var ticking = false;
 
-        window.addEventListener('scroll', function() {
-            if (!ticking) {
-                requestAnimationFrame(function() {
-                    var y = window.scrollY;
-                    if (y < 700) {
-                        var fade = Math.max(0, 1 - y / 550);
-                        var shift = y * 0.06;
-                        heroH1.style.transform = 'translateY(' + shift + 'px)';
-                        heroH1.style.opacity = fade;
-                        heroSub.style.transform = 'translateY(' + (shift * 0.4) + 'px)';
-                        heroSub.style.opacity = fade;
-                    }
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        }, { passive: true });
+        if (!reduceMotion) {
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    requestAnimationFrame(function() {
+                        var y = window.scrollY;
+                        if (y < 700) {
+                            var fade = Math.max(0, 1 - y / 550);
+                            var shift = y * 0.06;
+                            heroH1.style.transform = 'translateY(' + shift + 'px)';
+                            heroH1.style.opacity = fade;
+                            heroSub.style.transform = 'translateY(' + (shift * 0.4) + 'px)';
+                            heroSub.style.opacity = fade;
+                        }
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+        }
     </script>
 
 </body>
